@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   gcp-gcr: circleci/gcp-gcr@dev:<<pipeline.git.revision>>
-  gcp-cli: circleci/gcp-cli@2.4.1
+  gcp-cli: circleci/gcp-cli@3.0
   orb-tools: circleci/orb-tools@11.4
 filters: &filters
   tags:
