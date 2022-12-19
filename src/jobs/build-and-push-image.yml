@@ -9,6 +9,10 @@ parameters:
     description: executor to use for this job
     type: executor
 
+  setup:
+    description: Provide the steps to install and authenticate gcloud.
+    type: steps
+
   google-project-id:
     description: The Google project ID to connect with via the gcloud CLI
     type: env_var_name
@@ -111,6 +115,8 @@ steps:
         - setup_remote_docker:
             docker_layer_caching: <<parameters.use-docker-layer-caching>>
             version: <<parameters.remote-docker-version>>
+
+  - steps: <<parameters.setup>>
 
   - gcr-auth:
       google-project-id: <<parameters.google-project-id>>

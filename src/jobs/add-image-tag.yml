@@ -9,6 +9,10 @@ parameters:
     description: executor to use for this job
     type: executor
 
+  setup:
+    description: Provide the steps to install and authenticate gcloud.
+    type: steps
+
   google-project-id:
     description: The Google project ID to connect with via the gcloud CLI
     type: env_var_name
@@ -32,6 +36,8 @@ parameters:
     description: A new Docker image tag
 
 steps:
+  - steps: <<parameters.setup>>
+
   - gcr-auth:
       registry-url: <<parameters.registry-url>>
       google-project-id: <<parameters.google-project-id>>
