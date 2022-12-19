@@ -12,8 +12,7 @@ jobs:
     steps:
       # test orb commands
       - checkout
-      - gcp-cli/install
-      - gcp-cli/initialize
+      - gcp-cli/setup
       - gcp-gcr/gcr-auth
       - gcp-gcr/build-image:
           registry-url: us.gcr.io
@@ -47,8 +46,7 @@ workflows:
           requires:
             - integration-test
           setup:
-            - gcp-cli/install
-            - gcp-cli/initialize
+            - gcp-cli/setup
           post-steps:
             - run:
                 command: |
